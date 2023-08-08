@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { api_key } from "../../../Api_key/Api_key";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import MovieCard from "../../trendingMovies/MovieCard";
@@ -76,14 +76,14 @@ export default function MovieDetails() {
         {actor?.cast
           ?.filter((el) => el.profile_path)
           .map((movie) => (
-            <div className="min-w-[180px]">
+            <Link to={`/people/${movie.id}`} className="min-w-[180px]">
               <img
                 className="w-[180px] rounded-[20px]"
                 src={`https://www.themoviedb.org/t/p/original/${movie?.profile_path}`}
                 alt=""
               />
               <h4>{movie?.name}</h4>
-            </div>
+            </Link>
           ))}
       </div>
       <h1 className="py-5 text-3xl">Similar 💫</h1>

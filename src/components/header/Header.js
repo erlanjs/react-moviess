@@ -28,7 +28,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="min-w-[200px] z-30 h-[100vh] absolute left-0 top-0 bg-[#1A161F] pt-5">
+    <div className="min-w-[200px] z-30 h-[100vh] fixed left-0 top-0 bg-[#1A161F] pt-5">
       <div className="flex justify-center">
         <h2 className="text-white font-bold text-2xl">LOGO</h2>
       </div>

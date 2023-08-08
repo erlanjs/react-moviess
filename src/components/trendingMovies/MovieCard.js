@@ -8,6 +8,7 @@ export default function MovieCard({ movie }) {
   const navigate = useNavigate();
 
   function navigateToDetails() {
+    window.scrollTo(0, 0);
     navigate(`/movie/${movie.id}`);
   }
 

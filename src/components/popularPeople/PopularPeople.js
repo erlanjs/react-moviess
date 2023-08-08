@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { api_key } from "../../Api_key/Api_key";
+import { Link } from "react-router-dom";
 
 export default function PopularPeople() {
   const [popularPeople, setPopularPeople] = useState([]);
@@ -24,14 +25,14 @@ export default function PopularPeople() {
       <h3 className=" pt-6 text-xl font-bold">Popular People⭐️</h3>
       <div className="flex max-w-[100%]  overflow-scroll gap-5 mt-4 ">
         {popularPeople.map((movie) => (
-          <div className="min-w-[180px]">
+          <Link to={`/people/${movie.id}`} className="min-w-[180px]">
             <img
               className="w-[180px] rounded-[20px]"
               src={`https://www.themoviedb.org/t/p/original/${movie.profile_path}`}
               alt=""
             />
             <h4>{movie.name}</h4>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
