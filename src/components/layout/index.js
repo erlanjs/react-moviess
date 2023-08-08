@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <div className="flex gap-3">
       <Header />
-      {children}
+      <div className=" ml-[250px] w-full mr-[260px]">{children}</div>
     </div>
   );
 }

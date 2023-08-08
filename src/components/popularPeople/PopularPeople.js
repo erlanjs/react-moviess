@@ -24,7 +24,7 @@ export default function PopularPeople() {
       <h3 className=" pt-6 text-xl font-bold">Popular People⭐️</h3>
       <div className="flex max-w-[100%]  overflow-scroll gap-5 mt-4 ">
         {popularPeople.map((movie) => (
-          <div>
+          <div className="min-w-[180px]">
             <img
               className="w-[180px] rounded-[20px]"
               src={`https://www.themoviedb.org/t/p/original/${movie.profile_path}`}

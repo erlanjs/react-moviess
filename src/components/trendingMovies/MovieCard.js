@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import Popup from "../ui/popup/Popup";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieCard({ movie }) {
+  const [isOpenModal, setOpenModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  function navigateToDetails() {
+    navigate(`/movie/${movie.id}`);
+  }
+
   return (
     <div
-      className=" w-[600px] h-[300px] bg-red-200 relative rounded-[20px]"
+      className=" min-w-[600px] h-[300px] bg-red-200 relative rounded-[20px]"
       style={{
-        background: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}) red no-repeat center/cover`,
+        background: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}) no-repeat center/cover`,
       }}
     >
       <div
@@ -22,10 +32,6 @@ export default function MovieCard({ movie }) {
             src={`https://www.themoviedb.org/t/p/original/${movie.poster_path}`}
             alt=""
           />
-          {/* <img
-            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-            alt=""
-          /> */}
         </div>
 
         <div className="max-w-[400px] w-full ">
@@ -37,15 +43,36 @@ export default function MovieCard({ movie }) {
               : movie.overview}
           </p>
           <div className=" flex gap-5 ">
-            <button className=" py-[15px] px-[25px] bg-[#113995] rounded-[20px]">
+            <button
+              className=" py-[15px] px-[25px] bg-[#113995] rounded-[20px]"
+              onClick={() => setOpenModal(true)}
+            >
               Trailer
             </button>
-            <button className=" py-[15px] px-[20px] bg-[#113995] rounded-[20px]">
+            <button
+              className=" py-[15px] px-[20px] bg-[#113995] rounded-[20px]"
+              onClick={navigateToDetails}
+            >
               Watch Movie
             </button>
           </div>
         </div>
       </div>
+      {isOpenModal && (
+        <Popup
+          title={movie.title}
+          id={movie.id}
+          onClose={() => setOpenModal(false)}
+        >
+          <div className="  w-[200px]">
+            <img
+              className="w-[180px] rounded-[20px]"
+              src={`https://www.themoviedb.org/t/p/original/${movie.poster_path}`}
+              alt=""
+            />
+          </div>
+        </Popup>
+      )}
     </div>
   );
 }
